@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+帖子列表
+{% endblock %}
+
+
+{% block headerjs %}
+    <style>
+        form {
+          position: relative;
+          width: 150px;
+          margin: 0 auto;
+        }
+        .d1{
+            float: right;
+            line-height: 67px;
+        }
+        .d1 input {
+          width: 100px;
+          height: 30px;
+          border: 2px solid darkred;
+          border-radius: 5px;
+          outline: none;
+          background: white;
+          color: #1e242a;
+        }
+    </style>
+{% endblock %}
+
+
+{% block left %}
+
+    <div id="main">
+
+        <div class="archives">
+
+            {% for post in post_list %}
+
+                <article class="archive-article archive-type-post">
+                    <div class="archive-article-inner">
+                        <header class="archive-article-header">
+                            <a href="#" class="archive-article-date">
+                                <time>{{ post.created|date:'Y-m' }}</time>
+                            </a>
+
+                            <h1 itemprop="name">
+                                <a class="archive-article-title" target="_blank" href="/post/{{ post.id }}">{{ post.title }}</a>
+                            </h1>
+                        </header>
+                    </div>
+                </article>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
